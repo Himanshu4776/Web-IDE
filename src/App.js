@@ -1,24 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import React,{useState} from 'react';
+import Editor from './components/Editor';
 
 function App() {
+  const [html, setHtml] = useState('')
+  const [css, setCss] = useState('')
+  const [js, setJs] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="pane top-pane">
+        <Editor 
+          language="xml"
+          displayName="HTML"
+          value={html}
+          onChange={setHtml}
+        />
+        <Editor
+         language="xml"
+         displayName="HTML"
+         value={css}
+         onChange={setCss}
+        />
+        <Editor
+         language="xml"
+         displayName="HTML"
+         value={js}
+         onChange={setJs}
+        />
+      </div>
+      <div className="pane">
+        <iframe
+          title="output"
+          sandbox="allow-scripts"
+          frameBorder="0"
+          width="100%"
+          height="100%"
+        />
+      </div>
+    </>
   );
 }
 
