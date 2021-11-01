@@ -1,7 +1,9 @@
 body {
   margin: 0;
 }
-
+.banner {
+  background-color: blue;
+}
 .top-pane {
   background-color: hsl(225, 6%, 25%);
 }

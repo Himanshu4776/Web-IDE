@@ -1,6 +1,7 @@
 import './App.css';
 import React,{useState, useEffect} from 'react';
 import Editor from './components/Editor';
+// import { ToastDemo } from './components/toastdemo';
 import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      {/* <ToastDemo /> */}
       <div className="pane top-pane">
         <Editor 
           language="xml"
