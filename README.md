@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Technical Documentation - Code Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project: Online Code Editor
 
-## Available Scripts
+### Description
+The "Online Code Editor" project is a web application that allows users to write, edit, and preview HTML, CSS, and JavaScript code in real-time. It provides a user-friendly interface with three separate code editors for HTML, CSS, and JS, and a live preview pane to view the output.
 
-In the project directory, you can run:
 
-### `npm start`
+## Use the live Project: https://himanshu4776.github.io/Web-IDE/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technologies Used
+- React: The frontend of the application is built using React, a popular JavaScript library for building user interfaces.
+- HTML, CSS, and JavaScript: The project utilizes these three fundamental web technologies to enable code editing and rendering.
+- LocalStorage: The project uses LocalStorage to store the user's code so that it is preserved across sessions.
+- useEffect Hook: React's useEffect hook is used to manage side effects, such as updating the preview pane when the code changes.
+- Iframe: An iframe element is used to display the live preview of the rendered HTML, CSS, and JavaScript code.
 
-### `npm test`
+### Project Structure
+The project consists of the following main files and directories:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. `App.js`: This file contains the main component of the application, `App()`. It manages the state of the HTML, CSS, and JS code using React hooks (`useState`, `useEffect`) and coordinates the rendering of the code editors and the preview pane.
 
-### `npm run build`
+2. `App.css`: This file contains the CSS styles used for the layout and appearance of the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. `components/Editor.js`: This directory contains the `Editor` component, which represents an individual code editor. It receives props for the language (HTML, CSS, or JS), the display name, the initial code value, and a callback function to update the code when changes occur.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. `hooks/useLocalStorage.js`: This directory contains the `useLocalStorage` custom hook. It provides a convenient way to store and retrieve data from the browser's LocalStorage.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. `constants.js`: This file defines the initial starter code for HTML and CSS editors, which are used when the application starts.
 
-### `npm run eject`
+### How It Works
+1. On application startup, the `App()` component uses the `useLocalStorage` hook to retrieve the previously saved HTML and CSS code from LocalStorage. If no code is found, it initializes the HTML and CSS code using the constants defined in `constants.js`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. The three code editors (`Editor` components) for HTML, CSS, and JS are displayed side by side in the top pane of the application. Users can edit the code in each editor, and the changes are immediately reflected in the live preview pane.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Whenever the user modifies the code in any of the editors, the `onChange` callback passed to the `Editor` component is triggered. The callback updates the state of the corresponding code (HTML, CSS, or JS) in the `App()` component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. To provide a seamless preview experience, the `App()` component uses the `useEffect` hook to update the `srcDoc` state variable whenever there are changes to the HTML, CSS, or JS code. The `srcDoc` contains the rendered code, which is then displayed in the iframe.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. The iframe is sandboxed with the `sandbox="allow-scripts"` attribute to prevent any malicious scripts from being executed. It provides a secure environment to preview the code.
 
-## Learn More
+### Installation and Usage
+1. Clone the repository to your local machine.
+2. Run `npm install` to install the required dependencies.
+3. Run `npm start` to start the development server.
+4. The application will open in your default web browser, allowing you to use the online code editor.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Future Improvements
+1. User Authentication: Implement user authentication to allow users to save and share their code snippets.
+2. Theme Customization: Add the ability for users to customize the editor's theme and appearance.
+3. Additional Language Support: Extend the editor to support other programming languages and frameworks.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Conclusion
+The "Online Code Editor" project is a simple yet powerful tool for developers to experiment, test, and visualize their code in real-time. It provides a seamless editing experience and an instant preview of the code output. With its extensible architecture, the project serves as a foundation for adding more features and functionalities in the future.
